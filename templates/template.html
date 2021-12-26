@@ -1,0 +1,12 @@
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+{%- for request in requests -%}
+
+    {{ request["url"] }}
+
+{% endfor %}
+
+if __name__ == "__main__":
+    app.run(debug=True)
