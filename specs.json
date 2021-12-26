@@ -1,0 +1,10 @@
+[
+    {
+        "url": "/",
+        "method": "GET"
+    },
+    {
+        "url": "/posts",
+        "method": "GET"
+    }
+]

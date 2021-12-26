@@ -2,10 +2,11 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-{%- for request in requests -%}
+{% for spec in specs %}
 
-    {{ request["url"] }}
-
+@app.route("{{ spec["url"] }}")
+def {{ spec["url"][1:] + "url"}}():
+    return "test"
 {% endfor %}
 
 if __name__ == "__main__":
