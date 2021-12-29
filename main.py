@@ -1,31 +1,19 @@
 from jinja2 import Environment, FileSystemLoader
 import sys
 import json
+import template_renderer
 
 
-def load_specs(specs_file):
-    data = None
-    with open(specs_file, "r") as specs_file:
-        data = json.load(specs_file)
-    return data
-
-
-def render_template(template,specs):
-    res = template.render(specs = specs)
-    return res
-
-
-def parse_params():
+def print_help():
     pass
-
-
 if __name__ == "__main__":
-    specs = load_specs("specs.json")
-    env = Environment(
-        loader=FileSystemLoader("./templates"), trim_blocks=True, lstrip_blocks=True
-    )
-    template = env.get_template("template.j2")
-    with open("server.py","w") as out_file:
-        res = render_template(template,specs)
-        out_file.write(res)
-    # print(specs)
+    args = sys.argv
+    if len(args) == 1:
+        template_renderer.render_template()
+    elif len(args) == 2:
+        json_file = args[1]
+        template_renderer.render_template(json_file)
+    elif len(args) == 3:
+        template_renderer.render_template(args[1],args[2])
+    else:
+        raise Exception("invalid arguments")
