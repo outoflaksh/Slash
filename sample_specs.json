@@ -1,0 +1,12 @@
+[
+    {
+        "url": "/posts",
+        "method": "GET",
+        "size": 10,
+        "schema": {
+            "title": "LT",
+            "author": "ST",
+            "content": "P"
+        }
+    }
+]
