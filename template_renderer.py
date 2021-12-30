@@ -8,9 +8,12 @@ def load_specs(specs_file):
         data = json.load(specs_file)
     return data
 
-def render_template(json_file=None,out_file=None):
+
+def render_template(json_file=None, out_file=None):
+    print(f"Building the api from {json_file}...")
+
     if json_file == None:
-        json_file = "specs.json" 
+        json_file = "specs.json"
     if out_file == None:
         out_file = "server.py"
     specs = load_specs(json_file)
@@ -19,5 +22,6 @@ def render_template(json_file=None,out_file=None):
     )
     template = env.get_template("template.j2")
     with open(out_file, "w") as res_file:
-        res = template.render(specs = specs)
+        res = template.render(specs=specs)
         res_file.write(res)
+        print(f"API successfully created at {out_file}")

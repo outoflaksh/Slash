@@ -5,7 +5,7 @@ app = Flask(__name__)
 {% for spec in specs %}
 
 @app.route("{{ spec["url"] }}")
-def {{ spec["url"][1:] + "url"}}():
+def {{ spec["url"][1:] + "_url"}}():
     return "test"
 {% endfor %}
 
