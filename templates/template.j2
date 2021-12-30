@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from utils import generate_data
 
 app = Flask(__name__)
 
@@ -6,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("{{ spec["url"] }}")
 def {{ spec["url"][1:] + "_url"}}():
-    return "test"
+    return jsonify(generate_data({{ spec["size"] }}, {{ spec["schema"] }}))
 {% endfor %}
 
 if __name__ == "__main__":
